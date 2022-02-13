@@ -8,4 +8,7 @@ public class CakeModel {
     int coordinateX = 0;
     int coordinateY = 0;
 
+    public float balloonX;
+    public boolean drawBalloon;
+    public float balloonY;
 }

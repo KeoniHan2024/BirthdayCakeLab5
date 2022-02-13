@@ -1,7 +1,7 @@
 package cs301.birthdaycake;
 
 import android.content.pm.ActivityInfo;
-import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.activity_main);
 
         //hi
@@ -83,17 +83,20 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnTouchListener()  {
                     @Override
                     public boolean onTouch(View view, MotionEvent motionEvent) {
+                        CakeViewreference.drawBalloon = true;
+                        CakeViewreference.balloonX = (float) motionEvent.getX();
+                        CakeViewreference.balloonY = (float) motionEvent.getY();
+                        CakeViewreference.balloonPaint = new Paint();
+                        CakeViewreference.balloonPaint.setColor(0xFF0055FF);
+                        Log.e("Touched!", "onTouch: " +  motionEvent.getX() +  motionEvent.getX() );
                         CakeControlObject.getCakeModel().coordinateX = (int)motionEvent.getX();
                         CakeControlObject.getCakeModel().coordinateY = (int)motionEvent.getY();
                         CakeViewreference.invalidate();
                         return false;
                     }
                 }
-
         );
     }
-
-
 
 
     public void goodBye(View button) {
