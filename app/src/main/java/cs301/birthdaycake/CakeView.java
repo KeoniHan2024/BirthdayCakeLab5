@@ -47,7 +47,7 @@ public class CakeView extends SurfaceView {
         setWillNotDraw(false);
 
         //Setup our palette
-        cakePaint.setColor(0xFFC755B5);  //violet-red
+        cakePaint.setColor(0xFF74F284);  //light Line Green
         cakePaint.setStyle(Paint.Style.FILL);
         frostingPaint.setColor(0xFFFFFACD);  //pale yellow
         frostingPaint.setStyle(Paint.Style.FILL);
@@ -71,11 +71,11 @@ public class CakeView extends SurfaceView {
      * the position of the bottom left corner of the candle
      */
     public void drawCandle(Canvas canvas, float left, float bottom) {
-            canvas.drawRect(left, bottom - candleHeight, left + candleWidth, bottom, candlePaint);
+            canvas.drawRect(left, bottom - candleHeight, left + candleWidth + 50, bottom, candlePaint);
 
             if (newCake.candleLitStatus == true) {
                 //draw the outer flame
-                float flameCenterX = left + candleWidth / 2;
+                float flameCenterX = 25 + left + candleWidth / 2;
                 float flameCenterY = bottom - wickHeight - candleHeight - outerFlameRadius / 3;
                 canvas.drawCircle(flameCenterX, flameCenterY, outerFlameRadius, outerFlamePaint);
 
@@ -85,7 +85,7 @@ public class CakeView extends SurfaceView {
             }
 
             //draw the wick
-            float wickLeft = left + candleWidth / 2 - wickWidth / 2;
+            float wickLeft = 25 + left + candleWidth / 2 - wickWidth / 2;
             float wickTop = bottom - wickHeight - candleHeight;
             canvas.drawRect(wickLeft, wickTop, wickLeft + wickWidth, wickTop + wickHeight, wickPaint);
     }
