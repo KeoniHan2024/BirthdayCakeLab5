@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.activity_main);
 
+        // hi
         // Insert findviewByID() Here
 
         final CakeView CakeViewreference = findViewById(R.id.cakeviewID);
