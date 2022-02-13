@@ -5,5 +5,7 @@ public class CakeModel {
     public int candleCount = 2;
     public boolean frostingStatus = true;
     public boolean candlePresence = true;
+    int coordinateX = 0;
+    int coordinateY = 0;
 
 }

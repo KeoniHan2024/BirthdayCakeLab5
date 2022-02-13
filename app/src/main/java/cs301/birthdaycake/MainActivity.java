@@ -1,9 +1,11 @@
 package cs301.birthdaycake;
 
 import android.content.pm.ActivityInfo;
+import android.graphics.Canvas;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         setContentView(R.layout.activity_main);
 
         //hi
@@ -77,7 +79,22 @@ public class MainActivity extends AppCompatActivity {
         );
 
 
+        CakeViewreference.setOnTouchListener(
+                new View.OnTouchListener()  {
+                    @Override
+                    public boolean onTouch(View view, MotionEvent motionEvent) {
+                        CakeControlObject.getCakeModel().coordinateX = (int)motionEvent.getX();
+                        CakeControlObject.getCakeModel().coordinateY = (int)motionEvent.getY();
+                        CakeViewreference.invalidate();
+                        return false;
+                    }
+                }
+
+        );
     }
+
+
+
 
     public void goodBye(View button) {
         Log.i("button", "Goodbye");

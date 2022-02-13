@@ -17,6 +17,10 @@ public class CakeView extends SurfaceView {
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
 
+
+    //Cooridnate Colors
+    Paint coordinateColor = new Paint();
+
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
         and adapting to different tablets' screen sizes and resolutions.  I've deliberately
@@ -59,6 +63,8 @@ public class CakeView extends SurfaceView {
         innerFlamePaint.setStyle(Paint.Style.FILL);
         wickPaint.setColor(Color.BLACK);
         wickPaint.setStyle(Paint.Style.FILL);
+        coordinateColor.setColor(0xFFFF0000);
+        coordinateColor.setTextSize(50.0f);
 
         setBackgroundColor(Color.WHITE);  //better than black default
 
@@ -149,6 +155,10 @@ public class CakeView extends SurfaceView {
             drawCandle(canvas, cakeLeft + cakeWidth / 2 - cakeWidth/5 * 2, cakeTop);
 
         }//onDraw
+
+        canvas.drawText("Tap Coordinates:", getWidth()-500.0f, getHeight()-60.0f, coordinateColor);
+        canvas.drawText(newCake.coordinateX + ", " + newCake.coordinateY, getWidth()-500.0f, getHeight()-15.0f, coordinateColor);
+
     }
 
         public CakeModel getCakeModelReference () {
